@@ -1,5 +1,13 @@
 #include <iostream>
 #include <cstdlib>
+#include <math.h>
+
+// funkcija
+double sixhump(double *x)
+{
+    double f = (4- 2.1 * x[0] * x[0] + (pow(x[0],4))/3) * x[0] * x[0] + x[0] * x[1] + (-4+4*x[1]*x[1])*(pow(x[1],2));
+    return f;
+}
 
 using namespace std;
 
@@ -23,14 +31,16 @@ int main()
     cin >> n;
 
     double vektorius[n];
-    cout << "x = [ "; // papildziau
+
     for(int i=0; i<n; i++)
     {
         vektorius[i] = rand() * (virsutinis_rezis - apatinis_rezis) / RAND_MAX + apatinis_rezis;
-
-        cout << vektorius[i] << " "; // pakeiciau
+        cout << "Skaicius = " << vektorius[i] << endl; // pakeiciau
     }
-    cout << "]"; // papildziau
+
+    cout << "Funkcija = " << sixhump(&vektorius[0]) << endl; // pakeiciau
+    cout << "===================================" << endl;
+
 
     return 0;
 }
