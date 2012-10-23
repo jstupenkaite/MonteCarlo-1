@@ -23,24 +23,46 @@ int main()
 
     // Vektoriu kurimas, kuriu elementai yra atitiktiniai realus skaiciai
 
-    double virsutinis_rezis, apatinis_rezis; // apsirasome intervalo rezius
+    double virsutinis_rezis, apatinis_rezis, virsutinis_rezis2, apatinis_rezis2; // apsirasome intervalo rezius
 
-    cout << "Iveskite inervalo rerzius: ";
+    cout << "Iveskite inervalo rerzius x1: ";
     cin >> apatinis_rezis >> virsutinis_rezis;
+    cout << "Iveskite inervalo rerzius x2: ";
+    cin >> apatinis_rezis2 >> virsutinis_rezis2;
     cout << "Iveskite vektoriaus ilgi: ";
     cin >> n;
 
-    double vektorius[n];
+    double vektorius[n], funkcija[200];
+
+    for (int j=0; j<100; j++)
+    {
 
     for(int i=0; i<n; i++)
     {
-        vektorius[i] = rand() * (virsutinis_rezis - apatinis_rezis) / RAND_MAX + apatinis_rezis;
-        cout << "Skaicius = " << vektorius[i] << endl; // pakeiciau
+        if (i == 0)
+        {
+           vektorius[i] = rand() * (virsutinis_rezis - apatinis_rezis) / RAND_MAX + apatinis_rezis;
+           cout << "Skaicius = " << vektorius[i] << endl; // pakeiciau
+        }
+        else
+        {
+           vektorius[i] = rand() * (virsutinis_rezis2 - apatinis_rezis2) / RAND_MAX + apatinis_rezis2;
+           cout << "Skaicius = " << vektorius[i] << endl; // pakeiciau
+        }
+
     }
 
     cout << "Funkcija = " << sixhump(&vektorius[0]) << endl; // pakeiciau
     cout << "===================================" << endl;
+    funkcija[j] = sixhump(&vektorius[0]);
+    }
 
+    double min = funkcija[0];
+    for (int i=0; i<100; i++)
+    {
+        if (funkcija[i] < min) min = funkcija[i];
+    }
+    cout << "MIN: " << min;
 
     return 0;
 }
